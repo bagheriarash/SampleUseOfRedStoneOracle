@@ -73,7 +73,7 @@ export default App;
  
 A more complex example of a React interface using RedStone Oracles to track the price of a specific NFT (Non-Fungible Token):
 
-```
+```javascript
 import React, { useState, useEffect } from "react";
 import { RedstoneOracles } from "redstone-oracles";
 import Web3 from "web3";
@@ -115,6 +115,8 @@ const App = () => {
 
 export default App;
 ```
+
+In this example, the interface allows users to input the contract address and ID of the NFT they want to track. The price of the NFT is fetched from the smart contract using Web3.js and displayed in Ether (ETH). The Ethereum price is fetched from RedStone Oracles. The interface is a bit more complex due to the interaction with the Ethereum blockchain, but it provides a more accurate and up-to-date price for the NFT.
 
 
 **Step 4: Starting the Project**
