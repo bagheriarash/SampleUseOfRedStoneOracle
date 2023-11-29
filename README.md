@@ -70,6 +70,53 @@ const App = () => {
 export default App;
 ```
 
+ 
+A more complex example of a React interface using RedStone Oracles to track the price of a specific NFT (Non-Fungible Token):
+
+```
+import React, { useState, useEffect } from "react";
+import { RedstoneOracles } from "redstone-oracles";
+import Web3 from "web3";
+
+const App = () => {
+  const [nftPrice, setNftPrice] = useState(0);
+  const [nftId, setNftId] = useState("");
+  const [nftContract, setNftContract] = useState("");
+  const web3 = new Web3(Web3.givenProvider);
+
+  const getNftPrice = async () => {
+    const contract = new web3.eth.Contract(ABI, nftContract);
+    const price = await contract.methods.priceOf(nftId).call();
+    setNftPrice(web3.utils.fromWei(price, 'ether'));
+  };
+
+  useEffect(() => {
+    // Get the Ethereum price from RedStone Oracles
+    RedstoneOracles.getPrice("ETH", (err, price) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      setEthPrice(price);
+    });
+  }, []);
+
+  return (
+    <div>
+      <h1>NFT Price Tracker</h1>
+      <input type="text" placeholder="Enter NFT Contract Address" onChange= { (e) => setNftContract(e.target.value)} />
+      <input type="text" placeholder="Enter NFT ID" onChange= { (e) => setNftId(e.target.value)} />
+      <button onClick={getNftPrice}>Get NFT Price</button>
+      <h2>NFT Price: {nftPrice} ETH</h2>
+      <p>Powered by RedStone Oracles</p>
+    </div>
+  );
+};
+
+export default App;
+```
+
+
 **Step 4: Starting the Project**
 Witness your creation in action by launching the project using ‘npm start’. Your DApp will come to life right in your browser.
 
