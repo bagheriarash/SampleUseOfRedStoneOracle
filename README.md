@@ -1,4 +1,4 @@
-# SampleUseOfRedStoneOracle
+# Sample Use Of RedStone Oracle
 A step-by-step guide on how to use RedStone Oracle for your decentralized applications (DApps):
 
 **Step 1: Setting Up the Project**
